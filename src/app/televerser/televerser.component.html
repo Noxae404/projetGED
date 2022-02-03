@@ -1,0 +1,117 @@
+<div *ngIf="listeFactures">
+<div class = "row">
+
+    <!--Upload button-->
+<div>
+    <input  type="file" 
+            (change)="onChange($event)"
+            accept=".pdf"
+            class ="gb"
+            >
+  
+    <button class="gb gb-bordered hover-slide" 
+            id="gb9" 
+            (click)="onUpload()">
+        Upload
+    </button>
+</div>
+
+
+
+</div>
+
+
+
+<div class="row">
+        <div class = "col-sm-5 ">
+            <div *ngIf="lesFichiers">
+                
+                <table style="justify-content: center;">
+                    <tr *ngFor="let f of lesFichiers; let index = index">
+                        <td>
+                        <button class = "gb gb-bordered hover-slide" id = "gb9" (click)="onAfficher(index)">{{f.name}}</button>  
+                        </td>
+                        <td>
+                            <button  (click)="onSupprimer(index)" class = "gb gb-bordered hover-slide" id = "gb9">Supprimer</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        
+    </div>
+
+
+    <div class = "col-sm-6">
+        <div *ngIf="afficher">
+                                <!--Afficher le pdf-->
+            <div id="outerContainer">
+                <div class="pdf-container">
+                    <pdf-viewer
+                    [src]="source"
+                    [render-text]="true"
+                    [original-size]="false"
+                    style="width: 400px; height: 500px">
+                    </pdf-viewer>
+                </div>
+                <button (click)="onClickInfos()" class = "gb gb-bordered hover-slide" id = "gb9">Voir Infos facture</button>
+                <button (click)="onClickCompta()" class = "gb gb-bordered hover-slide" id = "gb9">Créer fichier Compta</button>
+            </div>
+        </div>
+    </div>
+
+</div><!--end row2-->
+</div>
+
+<div *ngIf="clickInfos">
+<button (click)="onRetour()" class = "gb gb-bordered hover-slide" id = "gb9"><-</button>
+<div class = "row">
+
+    <div class="col-sm-6">
+        <div class="pdf-container">
+            <pdf-viewer
+            [src]="source"
+            [render-text]="true"
+            [original-size]="false"
+            style="width: 400px; height: 500px">
+        </pdf-viewer>
+    </div>
+</div>
+<!--
+<div class = "col-sm-6">
+    <form name = "Fournisseur">
+        <h2 style = "color: blue;">Fournisseur</h2>
+        <input type = "text" placeholder="Nom">
+        <input type = "text" placeholder="Adresse">
+        <input type = "text" placeholder="Complément d'adresse">
+        <input type = "text" placeholder="Code Postal">
+        <input type = "text" placeholder="Ville">
+        <input type = "text" placeholder="Pays">
+        <input type = "text" placeholder="N° TVA">
+        <input type = "text" placeholder="N° SIREN">
+        <input type = "text" placeholder="N° SIRET">
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <form name = "Facturation">
+        <h2 style = "color: blue;">Facturation</h2>
+        <input type = "text" placeholder="N° Livraison">
+        <input type = "text" placeholder="N° Commande">
+        <input type = "text" placeholder="N° Facture">
+        <input type = "text" placeholder="Date de facturation">
+        <input type = "text" placeholder="Date d'échéance">
+        <input type = "text" placeholder="Taux de TVA">
+        <input type = "text" placeholder="Montant HT">
+        <input type = "text" placeholder="Montant TVA">
+        <input type = "text" placeholder="Compte de charge">
+        <input type = "text" placeholder="Total TVA">
+        <input type = "text" placeholder="Total TTC">
+        <input type = "text" placeholder="Total HT">
+    </form>
+
+</div>
+
+</div>
+</div>
+-->
